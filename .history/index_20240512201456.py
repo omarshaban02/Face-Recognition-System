@@ -71,7 +71,7 @@ def detect_face_eyes_smiles(rgb_image):
     return face_only, face_eyes, face_smiles, face_eyes_smiles
 
 
-class FaceRecognizer(QMainWindow, ui):
+class FaceRecognizer(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(FaceRecognizer, self).__init__()
         self.setupUi(self)
@@ -81,7 +81,6 @@ class FaceRecognizer(QMainWindow, ui):
         self.plotwidget_set = [self.wgt_img_input, self.wgt_img_output]
         
         self.param_scale_factor = 0
-        self.param_min_neigbors = 0
         
         # Create an image item for each plot-widget
         self.image_item_set = [self.item_input, self.item_output] = [pg.ImageItem() for _ in range(2)]
@@ -168,9 +167,6 @@ class FaceRecognizer(QMainWindow, ui):
         new_value = self.scaleFactorSlider.value() * 0.04
         self.label_scale_factor_value.setText(f"{new_value:.2f}")
         self.param_scale_factor = new_value
-    
-    def _update_min_neighbors(self):
-        self.param_min_neigbors = self.spinBox_min_neigbors.value()
 
 
 app = QApplication(sys.argv)

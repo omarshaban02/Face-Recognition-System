@@ -291,110 +291,26 @@ QCheckBox{
        <attribute name="title">
         <string>Face Detection</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout" rowstretch="0,1" columnstretch="1,2">
-        <item row="0" column="0" colspan="2">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <property name="spacing">
-           <number>11</number>
-          </property>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QCheckBox" name="checkBox_smiles">
-              <property name="text">
-               <string>Smiles</string>
-              </property>
-              <attribute name="buttonGroup">
-               <string notr="true">buttonGroup</string>
-              </attribute>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="checkBox_eyes">
-              <property name="text">
-               <string>Eyes</string>
-              </property>
-              <attribute name="buttonGroup">
-               <string notr="true">buttonGroup</string>
-              </attribute>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_7">
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>Scale factor</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSlider" name="scaleFactorSlider">
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>50</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_9">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_8">
-            <item>
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>Min neighbors</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSlider" name="horizontalSlider_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btn_apply">
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>Apply</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QGridLayout" name="gridLayout" columnstretch="0,1">
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,2">
           <item>
            <widget class="PlotWidget" name="wgt_img_input" native="true">
+            <property name="sizeIncrement">
+             <size>
+              <width>1</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>1</width>
+              <height>1</height>
+             </size>
+            </property>
             <property name="whatsThis">
              <string>Widget Holding the opened image</string>
             </property>
@@ -404,34 +320,134 @@ QCheckBox{
            </widget>
           </item>
           <item>
-           <widget class="PlotWidget" name="wgt_graph_performance" native="true">
-            <property name="whatsThis">
-             <string>Widget Holding the opened image</string>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background: orange;</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="PlotWidget" name="wgt_graph_ROC" native="true">
-            <property name="whatsThis">
-             <string>Widget holding the edge detection result for colored image</string>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background: dark blue;</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="verticalLayout" stretch="1,2,2,2">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <widget class="QCheckBox" name="checkBox_smiles">
+                <property name="text">
+                 <string>Smiles</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="checkBox_eyes">
+                <property name="text">
+                 <string>Eyes</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Scale factor</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSlider" name="scaleFactorSlider">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>50</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_scale_factor_value">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>0</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Min neighbors</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinBox_min_neigbors">
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
-        <item row="1" column="1">
+        <item row="0" column="1">
          <widget class="PlotWidget" name="wgt_img_output" native="true">
           <property name="whatsThis">
            <string>Widget holding the edge detection result for colored image</string>
           </property>
           <property name="styleSheet">
            <string notr="true">background: crimson</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Performance / ROC</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="PlotWidget" name="wgt_graph_performance" native="true">
+          <property name="whatsThis">
+           <string>Widget Holding the opened image</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: orange;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="PlotWidget" name="wgt_graph_ROC" native="true">
+          <property name="whatsThis">
+           <string>Widget holding the edge detection result for colored image</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: dark blue;</string>
           </property>
          </widget>
         </item>
@@ -480,7 +496,7 @@ QCheckBox{
   <connection>
    <sender>scaleFactorSlider</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>label_9</receiver>
+   <receiver>label_scale_factor_value</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -494,7 +510,4 @@ QCheckBox{
    </hints>
   </connection>
  </connections>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>

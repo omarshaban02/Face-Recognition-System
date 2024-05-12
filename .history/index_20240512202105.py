@@ -71,7 +71,7 @@ def detect_face_eyes_smiles(rgb_image):
     return face_only, face_eyes, face_smiles, face_eyes_smiles
 
 
-class FaceRecognizer(QMainWindow, ui):
+class FaceRecognizer(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(FaceRecognizer, self).__init__()
         self.setupUi(self)
