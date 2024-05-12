@@ -16,16 +16,15 @@ smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 ui, _ = loadUiType('main.ui')
 
 
-def detect_face_eyes_smiles(rgb_image):
+def detect_face_eyes_smiles(rgb_image, scale_factor, min_neighbors):
     # Converting the image to gray
     gray = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2GRAY)
     frame = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
     # this returns the coordinates of the faces as x, y, w, h
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    faces = face_cascade.detectMultiScale(gray, scale_factor, min_neighbors)
 
     # copy of the frame
     face_only = frame.copy()
-    eyes_only = frame.copy()
     face_eyes = frame.copy()
     face_smiles = frame.copy()
     face_eyes_smiles = frame.copy()
@@ -41,7 +40,7 @@ def detect_face_eyes_smiles(rgb_image):
 
         # Getting the region of interest
         roi_gray = gray[y:y + h, x:x + w]
-        roi_color_eyes = eyes_only[y:y + h, x:x + w]
+        roi_color_eyes = face_eyes[y:y + h, x:x + w]
         roi_color_smiles = face_smiles[y:y + h, x:x + w]
         roi_color_eyes_smiles = face_eyes_smiles[y:y + h, x:x + w]
 
@@ -51,8 +50,8 @@ def detect_face_eyes_smiles(rgb_image):
         # Looping through the eyes
         for (ex, ey, ew, eh) in eyes:
             # Drawing a rectangle around the eyes
-            cv2.rectangle(roi_color_eyes, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
             cv2.rectangle(roi_color_eyes_smiles, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
+            cv2.rectangle(roi_color_eyes, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
 
         # Detecting the smiles
         smiles = smile_cascade.detectMultiScale(roi_gray, 1.7, 22)
@@ -79,10 +78,10 @@ class FaceRecognizer(QMainWindow, ui):
         self.loaded_image = None
 
         self.plotwidget_set = [self.wgt_img_input, self.wgt_img_output]
-        
+
         self.param_scale_factor = 0
         self.param_min_neigbors = 0
-        
+
         # Create an image item for each plot-widget
         self.image_item_set = [self.item_input, self.item_output] = [pg.ImageItem() for _ in range(2)]
 
@@ -94,6 +93,9 @@ class FaceRecognizer(QMainWindow, ui):
         self.checkBox_eyes.stateChanged.connect(self.apply)
         self.checkBox_smiles.stateChanged.connect(self.apply)
         self.scaleFactorSlider.valueChanged.connect(self._update_scale_factor)
+        self.spinBox_min_neigbors.valueChanged.connect(self._update_min_neighbors)
+        self.scaleFactorSlider.setValue(8)
+        self.spinBox_min_neigbors.setValue(5)
 
     ##############################################################################################                
 
@@ -117,8 +119,12 @@ class FaceRecognizer(QMainWindow, ui):
         self.apply()
 
     def apply(self):
+
+        scale_factor = self.scaleFactorSlider.value() * 0.04 + 1
+        min_neighbors = self.spinBox_min_neigbors.value()
         # Detecting the face and eyes
-        face_only, face_eyes, face_smiles, face_eyes_smiles = detect_face_eyes_smiles(self.loaded_image)
+        face_only, face_eyes, face_smiles, face_eyes_smiles = detect_face_eyes_smiles(self.loaded_image, scale_factor,
+                                                                                      min_neighbors)
 
         if self.checkBox_eyes.isChecked() and self.checkBox_smiles.isChecked():
             print("Both")
@@ -163,14 +169,18 @@ class FaceRecognizer(QMainWindow, ui):
     def init_application(self):
         self.setup_plotwidgets()
         # self.setup_checkboxes()
-        
+
     def _update_scale_factor(self):
-        new_value = self.scaleFactorSlider.value() * 0.04
+        new_value = self.scaleFactorSlider.value() * 0.04 + 1
         self.label_scale_factor_value.setText(f"{new_value:.2f}")
         self.param_scale_factor = new_value
-    
+        if np.all(self.loaded_image) is not None:
+            self.apply()
+
     def _update_min_neighbors(self):
         self.param_min_neigbors = self.spinBox_min_neigbors.value()
+        if np.all(self.loaded_image) is not None:
+            self.apply()
 
 
 app = QApplication(sys.argv)
