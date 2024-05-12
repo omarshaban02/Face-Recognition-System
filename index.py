@@ -77,13 +77,15 @@ class FaceRecognizer(QMainWindow, ui):
 
         self.loaded_image = None
 
-        self.plotwidget_set = [self.wgt_img_input, self.wgt_img_output]
+        self.plotwidget_set = [self.wgt_img_input, self.wgt_img_output,
+                               self.wgt_reco_input, self.wgt_reco_output]
 
         self.param_scale_factor = 0
         self.param_min_neigbors = 0
 
         # Create an image item for each plot-widget
-        self.image_item_set = [self.item_input, self.item_output] = [pg.ImageItem() for _ in range(2)]
+        self.image_item_set = [self.item_input, self.item_output,
+                               self.item_reco_input, self.item_reco_output] = [pg.ImageItem() for _ in range(4)]
 
         self.init_application()
 
@@ -116,6 +118,7 @@ class FaceRecognizer(QMainWindow, ui):
         image = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2RGB)
         self.loaded_image = image
         self.display_image(self.item_input, self.loaded_image)
+        self.display_image(self.item_reco_input, self.loaded_image)
         self.apply()
 
     def apply(self):

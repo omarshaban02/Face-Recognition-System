@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1105</width>
+    <width>1102</width>
     <height>816</height>
    </rect>
   </property>
@@ -285,7 +285,7 @@ QCheckBox{
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -428,28 +428,51 @@ QCheckBox{
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Performance / ROC</string>
+        <string>Face Recognition</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="PlotWidget" name="wgt_graph_performance" native="true">
-          <property name="whatsThis">
-           <string>Widget Holding the opened image</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background: orange;</string>
-          </property>
-         </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="2,1">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QWidget" name="wgt_reco_input" native="true">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(85, 255, 0);
+</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="wgt_reco_output" native="true">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(85, 170, 255);</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
-        <item row="0" column="1">
-         <widget class="PlotWidget" name="wgt_graph_ROC" native="true">
-          <property name="whatsThis">
-           <string>Widget holding the edge detection result for colored image</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background: dark blue;</string>
-          </property>
-         </widget>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="PlotWidget" name="wgt_graph_performance" native="true">
+            <property name="whatsThis">
+             <string>Widget Holding the opened image</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background: orange;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="PlotWidget" name="wgt_graph_ROC" native="true">
+            <property name="whatsThis">
+             <string>Widget holding the edge detection result for colored image</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background: dark blue;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -462,8 +485,8 @@ QCheckBox{
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1105</width>
-     <height>30</height>
+     <width>1102</width>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

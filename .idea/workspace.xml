@@ -5,34 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="137c5956-49f5-496e-9a55-1c58882c1c1f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.history/index_20240420004506.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511205618.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511205815.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511210049.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511210213.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511210307.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511210529.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511210550.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511210620.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511210844.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511211039.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511211111.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240511211119.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240512200907.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240512201017.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240512201124.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240512201428.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240512201456.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240512202105.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/index_20240512202251.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Face-Recognition-System.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +29,9 @@
     &quot;accountId&quot;: &quot;890b55a2-e28f-4b22-8542-16a1759e4ade&quot;
   }
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -66,6 +44,7 @@
   "keyToString": {
     "Python.index.executor": "Run",
     "Python.index_20240512200907.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/Enginering/3rd year/Second term/Computer Vision/Tasks/Task5/Face-Recognition-System",
@@ -78,11 +57,35 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="index" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/index.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PY-241.15989.155" />
-        <option value="bundled-python-sdk-babbdf50b680-7c6932dee5e4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.15989.155" />
+        <option value="bundled-python-sdk-09665e90c3a7-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15026.15" />
       </set>
     </attachedChunks>
   </component>
