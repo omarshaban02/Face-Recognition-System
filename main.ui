@@ -430,21 +430,26 @@ QCheckBox{
        <attribute name="title">
         <string>Face Recognition</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="2,1">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="4,3">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
-           <widget class="QWidget" name="wgt_reco_input" native="true">
+           <widget class="PlotWidget" name="wgt_reco_input" native="true">
+            <property name="whatsThis">
+             <string>Widget Holding the opened image</string>
+            </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(85, 255, 0);
-</string>
+             <string notr="true">background: orange;</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="wgt_reco_output" native="true">
+           <widget class="PlotWidget" name="wgt_reco_output" native="true">
+            <property name="whatsThis">
+             <string>Widget holding the edge detection result for colored image</string>
+            </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(85, 170, 255);</string>
+             <string notr="true">background: dark blue;</string>
             </property>
            </widget>
           </item>
@@ -486,7 +491,7 @@ QCheckBox{
      <x>0</x>
      <y>0</y>
      <width>1102</width>
-     <height>29</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
