@@ -1,3 +1,4 @@
+import os
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 from ui import Ui_MainWindow
@@ -9,9 +10,6 @@ from PyQt5.uic import loadUiType
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
-
-# from classes import Image
-
 
 ui, _ = loadUiType('main.ui')
 
@@ -70,6 +68,49 @@ def detect_face_eyes_smiles(rgb_image, scale_factor, min_neighbors):
     return face_only, face_eyes, face_smiles, face_eyes_smiles
 
 
+# ---------------------------------- Face Recognition ----------------------------------
+
+def load_pca_model(load_folder):
+    centered_data = np.load(os.path.join(load_folder, 'centered_data.npy'))
+    eigenfaces = np.load(os.path.join(load_folder, 'eigenfaces.npy'))
+    mean_image = np.load(os.path.join(load_folder, 'mean_image.npy'))
+
+    return centered_data, eigenfaces, mean_image
+
+
+def transform_data(centered_data, selected_eigenvectors):
+    transformed_data = np.dot(selected_eigenvectors.T, centered_data)
+
+    return transformed_data
+
+
+def predict_pca(test_image, eigenfaces, mean_image, transformed_data):
+    # Resize the test image to match the target size
+    test_image_resized = cv2.resize(test_image, (64, 64))
+
+    # Flatten the resized test image
+    test_image_vector = test_image_resized.flatten()
+
+    # Center the test image by subtracting the mean image
+    centered_test_image = test_image_vector - mean_image
+
+    # Project the centered test image onto the eigenfaces
+    test_image_transformed = np.dot(eigenfaces.T, centered_test_image)
+
+    # Calculate Euclidean distances between the transformed test image and training images
+    distances = np.linalg.norm(transformed_data - test_image_transformed[:, np.newaxis], axis=0)
+    # print(transformed_data.shape)
+
+    # Find the index of the closest match
+    closest_index = np.argmin(distances)
+    # print("closest_index:", closest_index)
+
+    predicted_subject = closest_index // 10 + 1
+    print("predicted_subject", predicted_subject)
+
+    return predicted_subject
+
+
 class FaceRecognizer(QMainWindow, ui):
     def __init__(self):
         super(QMainWindow, self).__init__()
@@ -83,7 +124,7 @@ class FaceRecognizer(QMainWindow, ui):
         self.param_min_neigbors = 0
 
         # Create an image item for each plot-widget
-        self.image_item_set = [self.item_input, self.item_output,self.item_reco_output, self.item_reco_input]\
+        self.image_item_set = [self.item_input, self.item_output, self.item_reco_output, self.item_reco_input] \
             = [pg.ImageItem() for _ in range(4)]
 
         self.init_application()
@@ -97,10 +138,13 @@ class FaceRecognizer(QMainWindow, ui):
         self.spinBox_min_neigbors.valueChanged.connect(self._update_min_neighbors)
         self.scaleFactorSlider.setValue(8)
         self.spinBox_min_neigbors.setValue(5)
+        self.btn_recognize.clicked.connect(lambda: self.recognize(eigenfaces, mean_image, transformed_data))
 
-    ##############################################################################################                
+        # ---------------------------------- Face Recognition ----------------------------------
+        centered_data, eigenfaces, mean_image = load_pca_model("./saved_model")
+        transformed_data = transform_data(centered_data, eigenfaces)
 
-    ################################# Misc Functions #############################################
+    # ################################ Misc Functions #############################################
 
     def open_image(self):
         file_dialog = QFileDialog(self)
@@ -160,7 +204,10 @@ class FaceRecognizer(QMainWindow, ui):
                 plotwidget.setTitle(plot_title)
 
             plotwidget.setBackground((25, 30, 40))
-            plotwidget.showGrid(x=True, y=True)
+            plotwidget.showGrid(x=False, y=False)
+            plotwidget.showAxis('left', False)
+            plotwidget.showAxis('bottom', False)
+            plotwidget.setStyleSheet("border: 2px solid #176b87; border-radius: 5px")
 
         # Adds the image items to their corresponding plot widgets, so they can be used later to display images
         for plotwidget, imgItem in zip(self.plotwidget_set, self.image_item_set):
@@ -184,6 +231,12 @@ class FaceRecognizer(QMainWindow, ui):
         self.param_min_neigbors = self.spinBox_min_neigbors.value()
         if np.all(self.loaded_image) is not None:
             self.apply()
+
+    def recognize(self, eigenfaces, mean_image, transformed_data):
+        predicted_subject = predict_pca(self.loaded_image, eigenfaces, mean_image, transformed_data)
+        subject_image = cv2.imread(f"./labeled_faces/s{predicted_subject:02d}_01.jpg")
+        subject_image = cv2.cvtColor(subject_image, cv2.COLOR_BGR2RGB)
+        self.display_image(self.item_reco_output, subject_image)
 
 
 app = QApplication(sys.argv)

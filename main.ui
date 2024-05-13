@@ -285,7 +285,7 @@ QCheckBox{
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -430,7 +430,7 @@ QCheckBox{
        <attribute name="title">
         <string>Face Recognition</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="4,3">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="15,1">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
@@ -455,29 +455,24 @@ QCheckBox{
           </item>
          </layout>
         </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="PlotWidget" name="wgt_graph_performance" native="true">
-            <property name="whatsThis">
-             <string>Widget Holding the opened image</string>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background: orange;</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="PlotWidget" name="wgt_graph_ROC" native="true">
-            <property name="whatsThis">
-             <string>Widget holding the edge detection result for colored image</string>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background: dark blue;</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QPushButton" name="btn_recognize">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Recognize</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -491,7 +486,7 @@ QCheckBox{
      <x>0</x>
      <y>0</y>
      <width>1102</width>
-     <height>30</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
