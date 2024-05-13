@@ -1,15 +1,18 @@
 import os
 import sys
+import threading
+
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 from ui import Ui_MainWindow
 import pyqtgraph as pg
 import numpy as np
 import cv2
 from PyQt5.uic import loadUiType
+from deepface import DeepFace
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
-smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
+face_cascade = cv2.CascadeClassifier('Cascade-FD-model/haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('Cascade-FD-model/haarcascade_eye.xml')
+smile_cascade = cv2.CascadeClassifier('Cascade-FD-model/haarcascade_smile.xml')
 
 ui, _ = loadUiType('main.ui')
 
@@ -162,7 +165,7 @@ class FaceRecognizer(QMainWindow, ui):
         self.loaded_image = image
         self.display_image(self.item_input, self.loaded_image)
         self.display_image(self.item_reco_input, self.loaded_image)
-
+        threading.Thread(target=self.get_analysis).start()
         self.apply()
 
     def apply(self):
@@ -237,6 +240,13 @@ class FaceRecognizer(QMainWindow, ui):
         subject_image = cv2.imread(f"./labeled_faces/s{predicted_subject:02d}_01.jpg")
         subject_image = cv2.cvtColor(subject_image, cv2.COLOR_BGR2RGB)
         self.display_image(self.item_reco_output, subject_image)
+
+    def get_analysis(self):
+        analysis = DeepFace.analyze(self.loaded_image, actions=['age', 'gender', 'emotion'])
+        self.ageLabel.setText(f"{analysis[0]['age']}")
+        self.genderLabel.setText(f"{analysis[0]['dominant_gender']}")
+        self.emotionLabel.setText(f"{analysis[0]['dominant_emotion']}")
+        
 
 
 app = QApplication(sys.argv)

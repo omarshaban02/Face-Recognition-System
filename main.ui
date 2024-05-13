@@ -295,7 +295,17 @@ QCheckBox{
         <property name="leftMargin">
          <number>5</number>
         </property>
-        <item row="1" column="0">
+        <item row="0" column="1">
+         <widget class="PlotWidget" name="wgt_img_output" native="true">
+          <property name="whatsThis">
+           <string>Widget holding the edge detection result for colored image</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: crimson</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,2">
           <item>
            <widget class="PlotWidget" name="wgt_img_input" native="true">
@@ -414,66 +424,6 @@ QCheckBox{
           </item>
          </layout>
         </item>
-        <item row="1" column="1">
-         <widget class="PlotWidget" name="wgt_img_output" native="true">
-          <property name="whatsThis">
-           <string>Widget holding the edge detection result for colored image</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background: crimson</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_8">
-            <property name="text">
-             <string>Emotion</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="emotionLabel">
-            <property name="text">
-             <string>-</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Gender</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="genderLabel">
-            <property name="text">
-             <string>Male</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Age</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="agelabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tab_2">
@@ -482,8 +432,18 @@ QCheckBox{
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="15,1">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
-          <item>
+         <layout class="QGridLayout" name="gridLayout_3" rowstretch="1,9">
+          <item row="1" column="1">
+           <widget class="PlotWidget" name="wgt_reco_output" native="true">
+            <property name="whatsThis">
+             <string>Widget holding the edge detection result for colored image</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background: dark blue;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
            <widget class="PlotWidget" name="wgt_reco_input" native="true">
             <property name="whatsThis">
              <string>Widget Holding the opened image</string>
@@ -493,15 +453,55 @@ QCheckBox{
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="PlotWidget" name="wgt_reco_output" native="true">
-            <property name="whatsThis">
-             <string>Widget holding the edge detection result for colored image</string>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background: dark blue;</string>
-            </property>
-           </widget>
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QLabel" name="genderLabel">
+              <property name="text">
+               <string>Man</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>Emotion:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="emotionLabel">
+              <property name="text">
+               <string>Happy</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Age:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="ageLabel">
+              <property name="text">
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Gender:</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -536,7 +536,7 @@ QCheckBox{
      <x>0</x>
      <y>0</y>
      <width>1102</width>
-     <height>29</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
