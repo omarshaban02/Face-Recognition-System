@@ -1,6 +1,6 @@
 ## FACE RECOGNITION SYSTEM APPLICATION
 ## Description
-This is a desktop application built with PyQt to .
+This is a face recognition and analysis tool built using PyQt5, OpenCV, and DeepFace. It allows users to detect faces, eyes, and smiles, recognize individuals using a PCA model, and analyze attributes like age, gender, and emotion. The user-friendly interface enables real-time image processing and visualization.
 
 ## Table of Contents
 1. [Installation](#installation)
@@ -27,22 +27,22 @@ python index.py
 ```
 
 ## Features
-### Thresholding for Grayscale Images
-- Optimal Thresholding
-- Otsu's Method
-- Spectral Thresholding (more than 2 modes)
-- Local Thresholding
-
-### Unsupervised Segmentation for Grayscale and Color Images
-- K-means Clustering
-  ![K-means](assets/km.png)
-- Region Growing
-  ![RG](assets/rg1.png)
-- Agglomerative Clustering
-  ![AC](assets/agl.png)
-- Mean Shift Method
-  ![MS](assets/ms.png)
-
+### Face Detection
+- Detect faces using Haar cascades
+- Eye detection
+![Eye](assets/km.png)
+- Smile detection
+![Smile](assets/km.png)
+### Face Recognition
+- PCA-based face recognition
+- Load and transform data for PCA model
+- Predict identities from images
+![Reco](assets/km.png)
+### Advanced Analysis
+- Age estimation
+- Gender prediction
+- Emotion recognition
+![Analysis](assets/km.png)
 ## Contributors
 
 - [Omar Shaban](https://github.com/omarshaban02)
