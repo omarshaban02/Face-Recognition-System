@@ -45,7 +45,7 @@ python index.py
 - Age estimation
 - Gender prediction
 - Emotion recognition
-![Analysis](assets/km.png)
+![Analysis](assets/analysis.png)
 ## Contributors
 
 - [Omar Shaban](https://github.com/omarshaban02)
