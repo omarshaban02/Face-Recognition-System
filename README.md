@@ -17,6 +17,9 @@ git clone https://github.com/omarshaban02/Face-Recognition-System.git
 
 # Navigate to the project directory
 cd Face-Recognition-System
+
+# Install Deepface Package
+pip install deepface
 ```
 
 ## Usage
@@ -37,7 +40,7 @@ python index.py
 - PCA-based face recognition
 - Load and transform data for PCA model
 - Predict identities from images
-![Reco](assets/km.png)
+![Reco](assets/reco.gif)
 ### Advanced Analysis
 - Age estimation
 - Gender prediction
